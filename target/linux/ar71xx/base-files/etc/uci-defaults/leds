@@ -201,6 +201,12 @@ wzr-hp-ag300h)
 	ucidef_set_led_usbdev "usb" "USB" "buffalo:green:usb" "1-1"
 	;;
 
+xwr100)
+        ucidef_set_led_wlan "wlan" "Wireless BGN" "xwr100:white:wlan" "phy0tpt"
+        ucidef_set_led_wlan "wlan" "Wireless AN" "xwr100:white:wlan" "phy1tpt"
+        ucidef_set_led_usbdev "usb" "USB" "xwr100:white:usb" "1-1"
+        ;;
+
 wzr-hp-g300nh)
 	ucidef_set_led_wlan "wlan" "Wireless" "buffalo:green:wireless" "phy0tpt"
 	ucidef_set_led_netdev "router" "Router" "buffalo:green:router" "eth1"

@@ -205,6 +205,14 @@ define Image/Build/WRT400N
 	fi
 endef
 
+define Image/Build/XWR100
+	$(call MkuImageLzma,$(2),$(3))
+	$(call Sysupgrade/KRuImage,$(1),$(2),1507328,6291456)
+	if [ -e "$(call sysupname,$(1),$(2))" ]; then \
+		xwr100 $(KDIR_TMP)/vmlinux-$(2).uImage $(KDIR)/root.$(1) $(call factoryname,$(1),$(2)); \
+	fi
+endef
+
 define Image/Build/DIR825B1
 	$(call MkuImageLzma,$(2),$(3) $(dir825b1_mtdlayout))
 	$(call Sysupgrade/KRuImage,$(1),$(2),1048576,5308416)
@@ -905,6 +913,8 @@ $(eval $(call SingleProfile,WHRHPG300N,$(fs_64k),WHRHPGN,whr-hp-gn,WHR-HP-GN,tty
 $(eval $(call SingleProfile,WHRHPG300N,$(fs_64k),WLAEAG300N,wlae-ag300n,WLAE-AG300N,ttyS0,115200,$$(whrhpg300n_mtdlayout),WLAE-AG300N))
 
 $(eval $(call SingleProfile,WRT400N,$(fs_64k),WRT400N,wrt400n,WRT400N,ttyS0,115200))
+
+$(eval $(call SingleProfile,XWR100,$(fs_64k),XWR100,xwr100,XWR100,ttyS0,115200))
 
 $(eval $(call SingleProfile,WZRHPG30XNH,$(fs_128k),WZRHPG300NH,wzr-hp-g300nh,WZR-HP-G300NH,ttyS0,115200,WZR-HP-G300NH))
 $(eval $(call SingleProfile,WZRHPG30XNH,$(fs_64k),WZRHPG300NH2,wzr-hp-g300nh2,WZR-HP-G300NH2,ttyS0,115200,WZR-HP-G300NH2))

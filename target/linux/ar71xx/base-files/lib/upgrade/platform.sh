@@ -112,6 +112,7 @@ platform_check_image() {
 	tew-632brp | \
 	tew-712br | \
 	wrt400n | \
+	xwr100 | \
 	airrouter | \
 	bullet-m | \
 	nanostation-m | \
