@@ -1,0 +1,38 @@
+--- a/arch/mips/ath79/Kconfig
++++ b/arch/mips/ath79/Kconfig
+@@ -630,6 +630,16 @@ config ATH79_MACH_UBNT_XM
+ 	  Say 'Y' here if you want your kernel to support the
+ 	  Ubiquiti Networks XM (rev 1.0) board.
+ 
++config ATH79_MACH_XWR100
++	bool "Vizio XWR100 board support"
++	select SOC_AR71XX
++	select ATH79_DEV_ETH
++	select ATH79_DEV_AP9X_PCI if PCI
++	select ATH79_DEV_GPIO_BUTTONS
++	select ATH79_DEV_LEDS_GPIO
++	select ATH79_DEV_M25P80
++	select ATH79_DEV_USB
++
+ config ATH79_MACH_ZCN_1523H
+ 	bool "Zcomax ZCN-1523H support"
+ 	select SOC_AR724X
+--- a/arch/mips/ath79/Makefile
++++ b/arch/mips/ath79/Makefile
+@@ -103,5 +103,6 @@ obj-$(CONFIG_ATH79_MACH_WZR_HP_G300NH)	+
+ obj-$(CONFIG_ATH79_MACH_WZR_HP_G300NH2)	+= mach-wzr-hp-g300nh2.o
+ obj-$(CONFIG_ATH79_MACH_WZR_HP_AG300H)	+= mach-wzr-hp-ag300h.o
+ obj-$(CONFIG_ATH79_MACH_WZR_HP_G450H)	+= mach-wzr-hp-g450h.o
++obj-$(CONFIG_ATH79_MACH_XWR100)		+= mach-xwr100.o
+ obj-$(CONFIG_ATH79_MACH_ZCN_1523H)	+= mach-zcn-1523h.o
+ 
+--- a/arch/mips/ath79/machtypes.h
++++ b/arch/mips/ath79/machtypes.h
+@@ -115,6 +115,7 @@ enum ath79_mach_type {
+ 	ATH79_MACH_WZR_HP_G300NH,	/* Buffalo WZR-HP-G300NH */
+ 	ATH79_MACH_WZR_HP_G300NH2,	/* Buffalo WZR-HP-G300NH2 */
+ 	ATH79_MACH_WZR_HP_G450H,	/* Buffalo WZR-HP-G450H */
++	ATH79_MACH_XWR100,		/* Vizio XWR100 */
+ 	ATH79_MACH_ZCN_1523H_2,		/* Zcomax ZCN-1523H-2-xx */
+ 	ATH79_MACH_ZCN_1523H_5,		/* Zcomax ZCN-1523H-5-xx */
+ };

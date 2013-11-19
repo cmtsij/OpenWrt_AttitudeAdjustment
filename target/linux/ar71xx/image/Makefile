@@ -697,6 +697,14 @@ define Image/Build/OpenMesh
 		"$(KDIR)/root.$(1)" "rootfs"
 endef
 
+define Image/Build/XWR100
+	$(call MkuImageLzma,$(2),$(3))
+	$(call Sysupgrade/KRuImage,$(1),$(2),1507328,6291456)
+	if [ -e "$(call sysupname,$(1),$(2))" ]; then \
+		xwr100 $(KDIR_TMP)/vmlinux-$(2).uImage $(KDIR)/root.$(1) $(call factoryname,$(1),$(2)); \
+	fi
+endef
+
 define Image/Build/Zcomax
 	$(call MkuImageLzma,$(2),$(3) $(4))
 	$(call Sysupgrade/RKuImage,$(1),$(2),1507328,6356992)
@@ -910,6 +918,8 @@ $(eval $(call SingleProfile,WZRHPG30XNH,$(fs_128k),WZRHPG300NH,wzr-hp-g300nh,WZR
 $(eval $(call SingleProfile,WZRHPG30XNH,$(fs_64k),WZRHPG300NH2,wzr-hp-g300nh2,WZR-HP-G300NH2,ttyS0,115200,WZR-HP-G300NH2))
 $(eval $(call SingleProfile,WZRHPG30XNH,$(fs_64k),WZRHPAG300H,wzr-hp-ag300h,WZR-HP-AG300H,ttyS0,115200,WZR-HP-AG300H))
 $(eval $(call SingleProfile,WZRHPG30XNH,$(fs_64k),WZRHPG450H,wzr-hp-g450h,WZR-HP-G450H,ttyS0,115200,WZR-HP-AG450H))
+
+$(eval $(call SingleProfile,XWR100,$(fs_64k),XWR100,xwr100,XWR100,ttyS0,115200))
 
 $(eval $(call SingleProfile,Zcomax,$(fs_64k),ZCN1523H28,zcn-1523h-2-8,ZCN-1523H-2,ttyS0,115200,$$(zcn1523h_mtdlayout)))
 $(eval $(call SingleProfile,Zcomax,$(fs_64k),ZCN1523H516,zcn-1523h-5-16,ZCN-1523H-5,ttyS0,115200,$$(zcn1523h_mtdlayout)))
