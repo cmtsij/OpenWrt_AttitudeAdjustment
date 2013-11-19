@@ -207,6 +207,11 @@ wzr-hp-g300nh)
 	ucidef_set_led_usbdev "usb" "USB" "buffalo:blue:usb" "1-1"
 	;;
 
+xwr100)
+	ucidef_set_led_wlan "wlan" "Wireless" "xwr100:white:wlan" "phy1tpt"
+	ucidef_set_led_usbdev "usb" "USB" "xwr100:white:usb" "1-1"
+	;;
+
 zcn-1523h-2)
 	ucidef_set_led_netdev "lan1" "lan1" "zcn-1523h:green:lan1" "eth0"
 	;;

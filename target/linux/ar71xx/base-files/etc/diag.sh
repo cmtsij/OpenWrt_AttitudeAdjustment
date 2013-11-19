@@ -177,6 +177,9 @@ get_status_led() {
 	wrt160nl)
 		status_led="wrt160nl:blue:wps"
 		;;
+	xwr100)
+		status_led="xwr100:white:power"
+		;;
 	zcn-1523h-2 | zcn-1523h-5)
 		status_led="zcn-1523h:amber:init"
 		;;
