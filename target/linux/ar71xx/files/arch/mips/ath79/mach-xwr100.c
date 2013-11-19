@@ -159,7 +159,7 @@ static void __init xwr100_setup(void)
 					ARRAY_SIZE(xwr100_gpio_keys),
 					xwr100_gpio_keys);
 
-	ap94_pci_init(/*art + XWR100_CALDATA0_OFFSET*/ NULL, /*art + XWR100_MAC0_ADDR_OFFSET*/ NULL,	// Disable 2.4GHz interface
+	ap94_pci_init(art + XWR100_CALDATA0_OFFSET, art + XWR100_MAC0_ADDR_OFFSET,
 		      art + XWR100_CALDATA1_OFFSET, art + XWR100_MAC1_ADDR_OFFSET);
 }
 
