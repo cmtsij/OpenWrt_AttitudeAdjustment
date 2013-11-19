@@ -1,0 +1,11 @@
+--- a/drivers/net/wireless/ath/ath9k/ar9002_calib.c
++++ b/drivers/net/wireless/ath/ath9k/ar9002_calib.c
+@@ -644,6 +644,8 @@ static void ar9002_hw_pa_cal(struct ath_
+ 			ar9271_hw_pa_cal(ah, is_reset);
+ 		else
+ 			ah->pacal_info.skipcount--;
++	} else if (AR_SREV_9287(ah)) {
++		;
+ 	} else if (AR_SREV_9285_12_OR_LATER(ah)) {
+ 		if (is_reset || !ah->pacal_info.skipcount)
+ 			ar9285_hw_pa_cal(ah, is_reset);
