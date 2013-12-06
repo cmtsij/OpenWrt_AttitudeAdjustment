@@ -1075,7 +1075,7 @@ ar8327_hw_config_pdata(struct ar8xxx_priv *priv,
 
 	data = &priv->chip_data.ar8327;
 
-	data->port0_status = ar8327_get_port_init_status(&pdata->port0_cfg);
+	data->port0_status = ar8327_get_port_init_status(&pdata->cpuport_cfg);
 	data->port6_status = ar8327_get_port_init_status(&pdata->port6_cfg);
 
 	t = ar8327_get_pad_cfg(pdata->pad0_cfg);
