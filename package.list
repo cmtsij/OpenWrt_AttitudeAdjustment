@@ -1,4 +1,7 @@
 luci
 luci-app-ddns
+luci-app-mwan3
 luci-app-qos
 luci-app-wshaper
+mwan3
+wifi-watchdog
