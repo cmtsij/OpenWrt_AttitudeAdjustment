@@ -20,6 +20,8 @@ setup_interface () {
 	# TODO: apply $broadcast
 
 	for i in $router; do
+		# add gateway as host to workaround which is not in the same subnet.
+		route add -host "$i" dev "$interface"
 		proto_add_ipv4_route 0.0.0.0 0 "$i"
 	done
 
