@@ -23,6 +23,11 @@ setup_interface() {
 		local valid_gw=""
 		for i in $router ; do
 			route add default gw $i dev $interface
+			if [ "$?" != "0" ]; then
+				#workaround to add default gateway which is not in the same subnet.
+				route add -host $i dev $interface
+				route add default gw $i
+			fi
 			valid_gw="${valid_gw:+$valid_gw|}$i"
 		done
 		
