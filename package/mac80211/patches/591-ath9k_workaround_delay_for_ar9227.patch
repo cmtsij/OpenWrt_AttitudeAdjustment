@@ -1,0 +1,12 @@
+--- a/drivers/net/wireless/ath/ath9k/init.c
++++ b/drivers/net/wireless/ath/ath9k/init.c
+@@ -232,6 +232,9 @@ static unsigned int ath9k_reg_rmw(void *
+ 	unsigned long uninitialized_var(flags);
+ 	u32 val;
+ 
++	if(AR_SREV_9287(ah) && reg_offset == AR_DIAG_SW) 
++		udelay(100);
++
+ 	if (NR_CPUS > 1 && ah->config.serialize_regmode == SER_REG_MODE_ON) {
+ 		spin_lock_irqsave(&sc->sc_serial_rw, flags);
+ 		val = __ath9k_reg_rmw(sc, reg_offset, set, clr);
