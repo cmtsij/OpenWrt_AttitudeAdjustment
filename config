@@ -1,0 +1,37 @@
+#!/bin/bash -e
+
+option=$1
+
+CONFIG_LIST="config.list"
+
+# update source code database
+case "$option" in
+	save)
+		if [ -e .config ]; then
+			[ -e $CONFIG_LIST ] && cp $CONFIG_LIST $CONFIG_LIST.old
+			./scripts/diffconfig.sh > $CONFIG_LIST
+		else
+			echo "missing .config to save"
+		fi
+		;;
+	load)
+		if [ -e $CONFIG_LIST ]; then
+			echo "load from $CONFIG_LIST"
+			cp $CONFIG_LIST .config
+		else
+			echo "load from defconfig"
+		fi
+		make defconfig > /dev/null
+		;;
+	menuconfig)
+		$0 load
+		make menuconfig
+		$0 save
+		;;
+	*)
+		echo "Usage: $0 save|load|menuconfig	(menuconfig include load and save)"
+		;;
+
+esac
+
+
