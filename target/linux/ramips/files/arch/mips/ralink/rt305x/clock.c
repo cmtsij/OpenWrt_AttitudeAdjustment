@@ -34,7 +34,7 @@ void __init rt305x_clocks_init(void)
 
 	t = rt305x_sysc_rr(SYSC_REG_SYSTEM_CONFIG);
 
-	if (soc_is_rt305x() || soc_is_rt3350()) {
+	if (soc_is_rt305x()) {
 		t = (t >> RT305X_SYSCFG_CPUCLK_SHIFT) &
 		     RT305X_SYSCFG_CPUCLK_MASK;
 		switch (t) {
@@ -45,6 +45,11 @@ void __init rt305x_clocks_init(void)
 			rt305x_cpu_clk.rate = 384000000;
 			break;
 		}
+		rt305x_sys_clk.rate = rt305x_cpu_clk.rate / 3;
+		rt305x_uart_clk.rate = rt305x_sys_clk.rate;
+		rt305x_wdt_clk.rate = rt305x_sys_clk.rate;
+	} else if (soc_is_rt3350()) {
+		rt305x_cpu_clk.rate = 320000000;
 		rt305x_sys_clk.rate = rt305x_cpu_clk.rate / 3;
 		rt305x_uart_clk.rate = rt305x_sys_clk.rate;
 		rt305x_wdt_clk.rate = rt305x_sys_clk.rate;
@@ -94,6 +99,10 @@ void __init rt305x_clocks_init(void)
  */
 struct clk *clk_get(struct device *dev, const char *id)
 {
+	if (id == NULL){
+		return &rt305x_sys_clk;
+	}
+	
 	if (!strcmp(id, "sys"))
 		return &rt305x_sys_clk;
 

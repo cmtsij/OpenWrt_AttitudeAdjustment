@@ -104,6 +104,9 @@ get_status_led() {
 	w502u)
 		status_led="alfa:blue:wps"
 		;;
+	wcr-gn)
+		status_led="wcr-gn:red:diag"
+		;;
 	wcr-150gn)
 		status_led="wcr150gn:amber:power"
 		;;

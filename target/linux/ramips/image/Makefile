@@ -551,6 +551,10 @@ define Image/Build/Profile/W502U
 	$(call Image/Build/Template/$(fs_squash)/$(1),GENERIC_8M,w502u,W502U,ttyS1,115200,phys)
 endef
 
+define Image/Build/Profile/WCR_GN
+	$(call Image/Build/Template/$(fs_squash)/$(1),GENERIC_4M,wcr-gn,WCR-GN,ttyS1,57600,spi)
+endef
+
 define Image/Build/Profile/WCR150GN
 	$(call Image/Build/Template/$(fs_squash)/$(1),GENERIC_4M,wcr150gn,WCR150GN,ttyS1,57600,phys)
 endef
@@ -622,6 +626,7 @@ define Image/Build/Profile/Default
 	$(call Image/Build/Profile/V22RW2X2,$(1))
 	$(call Image/Build/Profile/W306R_V20,$(1))
 	$(call Image/Build/Profile/W502U,$(1))
+	$(call Image/Build/Profile/WCR_GN,$(1))
 	$(call Image/Build/Profile/WCR150GN,$(1))
 	$(call Image/Build/Profile/WHRG300N,$(1))
 	$(call Image/Build/Profile/WL_330N,$(1))

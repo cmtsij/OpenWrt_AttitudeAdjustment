@@ -77,6 +77,9 @@ ramips_board_name() {
 	*"Aztech HW550-3G")
 		name="hw550-3g"
 		;;
+	*"Buffalo WCR-GN")
+		name="wcr-gn"
+		;;
 	*"DIR-300 B1")
 		name="dir-300-b1"
 		;;

@@ -86,6 +86,7 @@ case "$FIRMWARE" in
 	wl-330n3g | \
 	wl-351 | \
 	wli-tx4-ag300n | \
+	wcr-gn | \
 	wr512-3gn | \
 	wr6202 | \
 	ur-336un | \

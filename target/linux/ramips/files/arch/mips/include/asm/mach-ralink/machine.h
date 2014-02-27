@@ -54,6 +54,7 @@ enum ramips_mach_type {
 	RAMIPS_MACH_V22RW_2X2,		/* Ralink AP-RT3052-V22RW-2X2 */
 	RAMIPS_MACH_W306R_V20,	        /* Tenda W306R_V20 */
 	RAMIPS_MACH_W502U,		/* ALFA Networks W502U */
+	RAMIPS_MACH_WCR_GN,		/* Buffalo WCR-GN */
 	RAMIPS_MACH_WCR150GN,		/* Sparklan WCR-150GN */
 	RAMIPS_MACH_WHR_G300N,		/* Buffalo WHR-G300N */
 	RAMIPS_MACH_WL341V3,		/* Sitecom WL-341 v3 */
