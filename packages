@@ -1,0 +1,55 @@
+#!/bin/bash -e
+
+option=$1
+package=$2
+
+list=package.list
+
+usage()
+{
+cat << EOF
+Usage:  $0
+                clean               //uninstall all
+                update              //update package source
+                search  [keyword]   //search keyword
+                grep	[keyword]   //grep keyword
+                install [package]   //install package
+                import              //install package by "package.list"
+EOF
+}
+
+# update source code database
+case "$option" in
+	clean)
+		./scripts/feeds uninstall -a
+		;;
+	update)
+		./scripts/feeds update
+		;;
+	search)
+		./scripts/feeds search "$package"
+		;;
+	grep)
+		./scripts/feeds list | grep "$package"
+		;;
+	install)
+		./scripts/feeds install "$package"
+		# make sure file exist
+		touch ${list}
+		# backup
+		cp ${list} ${list}.old
+		# generate new list
+		cp ${list} ${list}.tmp
+		echo "$package" >> ${list}.tmp
+		cat ${list}.tmp | uniq -u | sort > ${list}
+		;;
+	import)
+		# install all package from package.list
+		cat < ${list} | grep -v "^#.*$" | xargs -t -n 1 ./scripts/feeds install
+		;;
+	*)
+		usage
+		;;
+esac
+
+
