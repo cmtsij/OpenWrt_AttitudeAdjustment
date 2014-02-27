@@ -15,9 +15,9 @@ PKG_NAME:=Build dependency
 define Require/non-root
 	[ "$$(shell whoami)" != "root" ]
 endef
-$(eval $(call Require,non-root, \
-	Please do not compile as root. \
-))
+#$(eval $(call Require,non-root, \
+#	Please do not compile as root. \
+#))
 
 # Required for the toolchain
 define Require/working-make
